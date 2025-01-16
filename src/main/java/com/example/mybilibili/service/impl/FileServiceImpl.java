@@ -23,7 +23,7 @@ public class FileServiceImpl implements FileService {
     private String videoUploadDir = "/opt/videos/";
     private String videoUrlPrefix = "rtmp://8.130.31.247:1935/vod/";
     private String coverUploadDir = "/opt/photo/";
-    private String coverUrlPrefix = "photo.hardews.cn/";
+    private String coverUrlPrefix = "https://photo.hardews.cn/";
     @Override
     public int uploadFile(FileUploadVo f) {
         Integer uId = vm.selectVideoByAuthorAndTitle(f.getUser_id(), f.getTitle());

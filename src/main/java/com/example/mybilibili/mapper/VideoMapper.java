@@ -15,4 +15,7 @@ public interface VideoMapper extends BaseMapper<VideoEntity> {
 
     @Select("SELECT id FROM video WHERE author_id = #{userId} AND title = #{title} LIMIT 1")
     Integer selectVideoByAuthorAndTitle(@Param("userId") Long userId, @Param("title") String title);
+
+    @Select("SELECT COUNT(*) FROM video")
+    long selectVideoCount();
 }

@@ -1,6 +1,5 @@
 package com.example.mybilibili.service.impl;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.mybilibili.dto.VideoInfoVo;
 import com.example.mybilibili.dto.VideoLessInfoVo;
 import com.example.mybilibili.entity.VideoEntity;
@@ -45,5 +44,10 @@ public class VideoServiceImpl implements VideoService {
         }
 
         return vll;
+    }
+
+    @Override
+    public long getVideoCount() {
+        return vm.selectVideoCount();
     }
 }

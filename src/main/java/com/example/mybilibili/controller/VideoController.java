@@ -31,4 +31,9 @@ public class VideoController {
         List<VideoLessInfoVo> vli = vs.getVideoInfoByPagination(pagination);
         return R.ok().put("info", vli);
     }
+
+    @GetMapping("/count")
+    private R getVideoCount() {
+        return R.ok().put("count", vs.getVideoCount());
+    }
 }

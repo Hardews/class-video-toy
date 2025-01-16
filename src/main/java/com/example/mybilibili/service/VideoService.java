@@ -8,4 +8,5 @@ import java.util.List;
 public interface VideoService {
     VideoInfoVo getVideoInfo(Long videoId);
     List<VideoLessInfoVo> getVideoInfoByPagination(int page);
+    long getVideoCount();
 }
