@@ -13,4 +13,7 @@ import java.util.List;
 public interface VideoMapper extends BaseMapper<VideoEntity> {
     @Select("SELECT * FROM video WHERE id >= #{pageStart} AND id <= #{pageEnd}")
     List<VideoEntity> selectVideoByPage(@Param("pageStart") int pageStart, @Param("pageEnd") int pageEnd);
+
+    @Select("SELECT id FROM video WHERE author_id = #{userId} AND title = #{title}")
+    int selectVideoByAuthorAndTitle(@Param("userId") Long userId, @Param("title") String title);
 }
