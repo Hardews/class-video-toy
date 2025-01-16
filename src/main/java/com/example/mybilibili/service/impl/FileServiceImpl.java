@@ -26,6 +26,11 @@ public class FileServiceImpl implements FileService {
     private String coverUrlPrefix = "photo.hardews.cn/";
     @Override
     public int uploadFile(FileUploadVo f) {
+        Integer uId = vm.selectVideoByAuthorAndTitle(f.getUser_id(), f.getTitle());
+        if (uId != null) {
+            return -1;
+        }
+
         VideoEntity ve = new VideoEntity();
 
         // 时间
@@ -45,10 +50,16 @@ public class FileServiceImpl implements FileService {
         try {
             // 视频保存
             MultipartFile videoFile = f.getVideo();
+            if (videoFile == null) {
+                return -1;
+            }
             String videoFilename = videoFile.getOriginalFilename();
             File videoUploadedFile = new File(videoUploadDir + videoFilename);
             // 保存图片
             MultipartFile coverFile = f.getCover();
+            if (coverFile == null) {
+                return -1;
+            }
             String coverFilename = coverFile.getOriginalFilename();
             File coverUploadedFile = new File(coverUploadDir + coverFilename);
 
@@ -67,8 +78,7 @@ public class FileServiceImpl implements FileService {
         }
 
         // 保存成功获取文件 id
-        int id = vm.selectVideoByAuthorAndTitle(f.getUser_id(), f.getTitle());
 
-        return id;
+        return vm.selectVideoByAuthorAndTitle(f.getUser_id(), f.getTitle());
     }
 }

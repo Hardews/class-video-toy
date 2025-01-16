@@ -17,7 +17,7 @@ public class VideoController {
     @Autowired
     private VideoService vs;
 
-    @GetMapping("")
+    @GetMapping()
     private R getVideoInfo(Long id) {
         VideoInfoVo v = vs.getVideoInfo(id);
         return R.ok().put("info", v);

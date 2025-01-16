@@ -15,7 +15,7 @@ public class FileController {
     @Autowired
     private FileService fs;
 
-    @PostMapping("")
+    @PostMapping()
     private R uploadFile(FileUploadVo f) {
         int id = fs.uploadFile(f);
         return R.ok().put("video_id", id);
