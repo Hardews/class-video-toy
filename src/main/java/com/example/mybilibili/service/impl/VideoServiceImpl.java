@@ -31,8 +31,8 @@ public class VideoServiceImpl implements VideoService {
 
     @Override
     public List<VideoLessInfoVo> getVideoInfoByPagination(int pagination) {
-        int pageStart = pagination - 1;
-        int pageEnd = pageStart + pageNum;
+        int pageStart = (pagination - 1) * pageNum  + 1;
+        int pageEnd = pageStart + pageNum - 1;
         List<VideoEntity> vel = vm.selectVideoByPage(pageStart, pageEnd);
         if (vel.size() == 0){
             return null;
